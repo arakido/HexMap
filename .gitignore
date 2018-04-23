@@ -1,8 +1,6 @@
 .idea/
 /[Ll]ibrary/
-obj/
-ProjectSettings/
-UnityPackageManager/
+JetBrains*
 /[Tt]emp/
 /[Oo]bj/
 /[Bb]uild/
