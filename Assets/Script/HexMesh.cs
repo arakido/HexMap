@@ -152,27 +152,20 @@ public class HexMesh : MonoBehaviour {
         HexCell prevNeighbor = cell.GetNeighbor( direction.Previous() ) ;
         HexCell nextNeighbor = cell.GetNeighbor( direction.Next() ) ;
 
-
-        if ( prevNeighbor ==null && nextNeighbor == null ) {
-            AddQuad( v1, v2, v5, v6 );
-            AddQuadColor( cell.color, cell.color );
-        }
-        else if ( prevNeighbor == null ) {
-            AddQuad( v1, v2, v5, v4 );
-            AddQuadColor( cell.color, cell.color );
-
-            Color secondColor = ( cell.color + cell.color + nextNeighbor.color ) / 3f;
-            AddTriangle( v2, v4, v6 );
-            AddTriangleColor( cell.color, cell.color, secondColor );
-        }
-        else if ( nextNeighbor == null ) {
-            AddQuad( v1, v2, v3, v6 );
-            AddQuadColor( cell.color, cell.color );
+		Vector3 v7 = v5 ;
+        Vector3 v8 = v6;
+		
+		if ( nextNeighbor == null && prevNeighbor != null) {
+            v7 = v3 ;
+            v8 = v6 ;
 
             Color firstColor = ( cell.color + cell.color + prevNeighbor.color ) / 3f;
             AddTriangle( v1, v5, v3 );
             AddTriangleColor( cell.color, firstColor, cell.color );
         }
+
+		AddQuad(v1, v2, v7, v8);
+		AddQuadColor(cell.color);
         
     }
 
